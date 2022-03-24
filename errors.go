@@ -104,6 +104,7 @@ func ErrLogger(fn ErrorHandler) interface {
 	FeatureCountOption
 	FillBandOption
 	FillNoDataOption
+	FlushCacheOption
 	GeoJSONOption
 	GeometryTransformOption
 	GeometryReprojectOption
@@ -160,6 +161,9 @@ func (ec errorCallback) setBufferOpt(o *bufferOpts) {
 	o.errorHandler = ec.fn
 }
 func (ec errorCallback) setIntersectsOpt(o *intersectsOpts) {
+	o.errorHandler = ec.fn
+}
+func (ec errorCallback) setFlushCacheOpt(o *flushCacheOpts) {
 	o.errorHandler = ec.fn
 }
 func (ec errorCallback) setBuildOverviewsOpt(o *buildOvrOpts) {

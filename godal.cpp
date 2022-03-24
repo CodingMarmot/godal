@@ -558,6 +558,13 @@ void godalDatasetRasterIO(cctx *ctx, GDALDatasetH ds, GDALRWFlag rw, int nDSXOff
 	godalUnwrap();
 }
 
+void godalDatasetFlushCache(cctx *ctx, GDALDatasetH ds) {
+	godalWrap(ctx);
+	// No error is returned, so nothing to report
+	GDALFlushCache(ds);
+	godalUnwrap();
+}
+
 void godalFillRaster(cctx *ctx, GDALRasterBandH bnd, double real, double imag) {
 	godalWrap(ctx);
 	CPLErr ret = GDALFillRaster(bnd,real,imag);

@@ -82,6 +82,7 @@ extern "C" {
 	void godalDatasetRasterIO(cctx *ctx, GDALDatasetH ds, GDALRWFlag rw, int nDSXOff, int nDSYOff, int nDSXSize, int nDSYSize, void *pBuffer,
 		int nBXSize, int nBYSize, GDALDataType eBDataType, int nBandCount, int *panBandCount,
 		int nPixelSpace, int nLineSpace, int nBandSpace, GDALRIOResampleAlg alg);
+	void godalDatasetFlushCache(cctx *ctx, GDALDatasetH ds);
 	void godalBandRasterIO(cctx *ctx, GDALRasterBandH bnd, GDALRWFlag rw, int nDSXOff, int nDSYOff, int nDSXSize, int nDSYSize, void *pBuffer,
 		int nBXSize, int nBYSize, GDALDataType eBDataType, int nPixelSpace, int nLineSpace, GDALRIOResampleAlg alg);
 	void godalFillRaster(cctx *ctx, GDALRasterBandH bnd, double real, double imag);

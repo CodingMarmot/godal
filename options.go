@@ -394,6 +394,9 @@ type bufferOpts struct {
 type intersectsOpts struct {
 	errorHandler ErrorHandler
 }
+type flushCacheOpts struct {
+	errorHandler ErrorHandler
+}
 
 // SimplifyOption is an option passed to Geometry.Simplify()
 //
@@ -420,6 +423,15 @@ type BufferOption interface {
 //  - ErrLogger
 type IntersectsOption interface {
 	setIntersectsOpt(bo *intersectsOpts)
+}
+
+// FlushCacheOption is an option passed to Dataset.FlushCache()
+//
+//
+// Available options are:
+//  - ErrLogger
+type FlushCacheOption interface {
+	setFlushCacheOpt(bo *flushCacheOpts)
 }
 
 type setGeometryOpts struct {

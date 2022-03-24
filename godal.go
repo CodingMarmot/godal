@@ -1145,6 +1145,20 @@ func (ds *Dataset) IO(rw IOOperation, srcX, srcY int, buffer interface{}, bufWid
 	return cgc.close()
 }
 
+// FlushCache flushes the cache of the dataset
+func (ds *Dataset) FlushCache(opts ...FlushCacheOption) error {
+	bo := &flushCacheOpts{}
+	for _, o := range opts {
+		o.setFlushCacheOpt(bo)
+	}
+	cgc := createCGOContext(nil, bo.errorHandler)
+	C.godalDatasetFlushCache(cgc.cPointer(), ds.handle())
+	if err := cgc.close(); err != nil {
+		return err
+	}
+	return nil
+}
+
 // RegisterAll calls GDALAllRegister which registers all available raster and vector
 // drivers.
 //
